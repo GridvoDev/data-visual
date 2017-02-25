@@ -11,11 +11,12 @@ describe('VisualService use case test', () => {
     before(() => {
         service = new VisualService();
     });
-    describe('#provideViewVisualConfigToViewUser(viewID, viewUserID, visualOptions, traceContext, callback)', () => {
+    describe('#provideViewVisualConfigToViewUser(viewOptions, dataTypeConfigs, traceContext, callback)', () => {
         context('provide view visual config to view user', () => {
-            it('if no "viewID viewUserID visualOptions" or visualOptions no "level dataTypeConfigs",is return null', done => {
-                let visualOptions = {};
-                service.provideViewVisualConfigToViewUser("viewID", "viewUserID", visualOptions, {}, (err, visualConfigJSON) => {
+            it('if viewOptions no "viewID viewUserID level" or dataTypeConfigs,is return null', done => {
+                let viewOptions = {};
+                let dataTypeConfigs = {};
+                service.provideViewVisualConfigToViewUser(viewOptions, dataTypeConfigs, {}, (err, visualConfigJSON) => {
                     if (err) {
                         done(err);
                     }
@@ -83,28 +84,28 @@ describe('VisualService use case test', () => {
                     doneMore();
                 };
                 muk(service, "_dataCollectServiceGateway", mockDataCollectServiceGateway);
-                let viewID = "viewID";
-                let viewUserID = "viewUserID";
-                let visualOptions = {
-                    level: "station",
-                    dataTypeConfigs: {
-                        YL: {
-                            readableName: "",
-                            maxValue: 5000,
-                            minValue: 2000,
-                            interval: 500,
-                            splitNumber: 6
-                        },
-                        SW: {
-                            readableName: "",
-                            maxValue: 500,
-                            minValue: 100,
-                            interval: 100,
-                            splitNumber: 5
-                        }
+                let viewOptions = {
+                    viewID: "viewID",
+                    viewUserID: "viewUserID",
+                    level: "station"
+                }
+                let dataTypeConfigs = {
+                    YL: {
+                        readableName: "",
+                        maxValue: 5000,
+                        minValue: 2000,
+                        interval: 500,
+                        splitNumber: 6
+                    },
+                    SW: {
+                        readableName: "",
+                        maxValue: 500,
+                        minValue: 100,
+                        interval: 100,
+                        splitNumber: 5
                     }
                 };
-                service.provideViewVisualConfigToViewUser("viewID", "viewUserID", visualOptions, {}, (err, visualConfigJSON) => {
+                service.provideViewVisualConfigToViewUser(viewOptions, dataTypeConfigs, {}, (err, visualConfigJSON) => {
                     if (err) {
                         doneMore(err);
                     }
@@ -165,21 +166,21 @@ describe('VisualService use case test', () => {
                     doneMore();
                 };
                 muk(service, "_visualConfigRepository", mockVisualConfigRepository);
-                let viewID = "viewID";
-                let viewUserID = "viewUserID";
-                let visualOptions = {
-                    level: "station",
-                    dataTypeConfigs: {
-                        YL: {
-                            readableName: "",
-                            maxValue: 5000,
-                            minValue: 2000,
-                            interval: 500,
-                            splitNumber: 6
-                        }
+                let viewOptions = {
+                    viewID: "viewID",
+                    viewUserID: "viewUserID",
+                    level: "station"
+                }
+                let dataTypeConfigs = {
+                    YL: {
+                        readableName: "",
+                        maxValue: 5000,
+                        minValue: 2000,
+                        interval: 500,
+                        splitNumber: 6
                     }
                 };
-                service.provideViewVisualConfigToViewUser("viewID", "viewUserID", visualOptions, {}, (err, visualConfigJSON) => {
+                service.provideViewVisualConfigToViewUser(viewOptions, dataTypeConfigs, {}, (err, visualConfigJSON) => {
                     if (err) {
                         doneMore(err);
                     }
@@ -257,28 +258,28 @@ describe('VisualService use case test', () => {
                     doneMore();
                 };
                 muk(service, "_dataCollectServiceGateway", mockDataCollectServiceGateway);
-                let viewID = "viewID";
-                let viewUserID = "viewUserID";
-                let visualOptions = {
-                    level: "station",
-                    dataTypeConfigs: {
-                        YL: {
-                            readableName: "",
-                            maxValue: 5000,
-                            minValue: 2000,
-                            interval: 500,
-                            splitNumber: 6
-                        },
-                        SW: {
-                            readableName: "",
-                            maxValue: 500,
-                            minValue: 100,
-                            interval: 100,
-                            splitNumber: 5
-                        }
+                let viewOptions = {
+                    viewID: "viewID",
+                    viewUserID: "viewUserID",
+                    level: "station"
+                }
+                let dataTypeConfigs = {
+                    YL: {
+                        readableName: "",
+                        maxValue: 5000,
+                        minValue: 2000,
+                        interval: 500,
+                        splitNumber: 6
+                    },
+                    SW: {
+                        readableName: "",
+                        maxValue: 500,
+                        minValue: 100,
+                        interval: 100,
+                        splitNumber: 5
                     }
                 };
-                service.provideViewVisualConfigToViewUser("viewID", "viewUserID", visualOptions, {}, (err, visualConfigJSON) => {
+                service.provideViewVisualConfigToViewUser(viewOptions, dataTypeConfigs, {}, (err, visualConfigJSON) => {
                     if (err) {
                         doneMore(err);
                     }

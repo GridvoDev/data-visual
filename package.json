@@ -15,11 +15,11 @@
     "supertest": "^2.0.1"
   },
   "dependencies": {
-    "body-parser": "^1.16.0",
+    "body-parser": "^1.16.1",
     "co": "^4.6.0",
     "express": "^4.14.1",
-    "gridvo-common-js": "0.0.17",
-    "mongodb": "^2.2.22",
+    "gridvo-common-js": "0.0.19",
+    "mongodb": "^2.2.24",
     "underscore": "^1.8.3"
   }
 }

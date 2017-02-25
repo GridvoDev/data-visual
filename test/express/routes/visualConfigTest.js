@@ -21,8 +21,8 @@ describe('visualConfigRouter use case test', () => {
                 }));
                 app.use('/visual-config', visualConfigRouter);
                 let mockVisualService = {};
-                mockVisualService.provideViewVisualConfigToViewUser = function (viewID, viewUserID, visualOptions, traceContext, callback) {
-                    if (!viewID || !viewUserID || !visualOptions || !visualOptions.level || !visualOptions.dataTypeConfigs) {
+                mockVisualService.provideViewVisualConfigToViewUser = function (viewOptions, dataTypeConfigs, traceContext, callback) {
+                    if (!viewOptions || !viewOptions.viewID || !viewOptions.viewUserID || !viewOptions.level || !dataTypeConfigs) {
                         callback(null, null);
                         return;
                     }
@@ -78,18 +78,18 @@ describe('visualConfigRouter use case test', () => {
                 request(server)
                     .post(`/visual-config/load`)
                     .send({
-                        viewID: "viewID",
-                        viewUserID: "viewUserID",
-                        visualOptions: {
-                            level: "station",
-                            dataTypeConfigs: {
-                                YL: {
-                                    readableName: "",
-                                    maxValue: 5000,
-                                    minValue: 2000,
-                                    interval: 500,
-                                    splitNumber: 6
-                                }
+                        viewOptions: {
+                            viewID: "viewID",
+                            viewUserID: "viewUserID",
+                            level: "station"
+                        },
+                        dataTypeConfigs: {
+                            YL: {
+                                readableName: "",
+                                maxValue: 5000,
+                                minValue: 2000,
+                                interval: 500,
+                                splitNumber: 6
                             }
                         }
                     })
