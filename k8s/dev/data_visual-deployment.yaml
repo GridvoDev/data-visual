@@ -1,17 +1,20 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: data-visual
+  labels:
+    name: smartgrid-ms
+  name: smartgrid-ms
+  namespace: gridvo
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: data-visual
+        name: data-visual
     spec:
       containers:
       - name: data-visual
-        image: 10.0.2.62:5000/gridvo/data-visual:dev
+        image: 10.0.3.31:5000/gridvo/data-visual:dev
         imagePullPolicy: Always
         ports:
         - containerPort: 3001
